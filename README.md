@@ -7,32 +7,33 @@ Aplicativo de loja de informática desenvolvido em Java puro no Android Studio.
 ---
 
 ## Estrutura do Projeto
-```
 com.example.techshop_p1_grupo9
- ├── carrinho
- │    └── CarrinhoFragment.java
- ├── compra
- │    └── CompraFragment.java
- ├── home
- │    └── homeFragment.java
- └── MainActivity.java
-
+├── carrinho
+│    └── CarrinhoFragment.java
+├── compra
+│    └── CompraFragment.java
+├── home
+│    ├── homeFragment.java
+│    ├── Produto.java
+│    └── ProdutoAdapter.java
+└── MainActivity.java
 res/
- ├── drawable/
- │    ├── bg_pesquisa.xml          → fundo com radius da barra de pesquisa
- │    ├── user_icon                → ícone de perfil
- │    ├── cart_iconpng             → ícone do carrinho
- │    ├── pesquisa_icon            → ícone da barra de pesquisa
- │    ├── imagem_estatica          → banner principal
- │    └── imagem_estatica3_desing  → banner secundário
- ├── layout/
- │    ├── activity_main.xml
- │    ├── fragment_home.xml
- │    ├── fragment_carrinho.xml
- │    └── fragment_compra.xml
- └── navigation/
-      └── nav_graph.xml
-```
+├── drawable/
+│    ├── bg_pesquisa.xml           → fundo com radius da barra de pesquisa
+│    ├── user_icon                 → ícone de perfil
+│    ├── cart_iconpng              → ícone do carrinho
+│    ├── pesquisa_icon             → ícone da barra de pesquisa
+│    ├── imagem_estatica           → banner principal
+│    ├── imagem_estatica2_pcs      → banner de categorias de PCs
+│    └── imagem_estatica3_desing   → banner secundário
+├── layout/
+│    ├── activity_main.xml
+│    ├── fragment_home.xml
+│    ├── fragment_carrinho.xml
+│    ├── fragment_compra.xml
+│    └── item_produto.xml          → layout de cada item da lista
+└── navigation/
+└── nav_graph.xml
 
 ---
 
@@ -40,9 +41,10 @@ res/
 
 - Java (Android Studio)
 - Navigation Component
-- RecyclerView
+- RecyclerView + Adapter + ViewHolder
 - Fragments
-- Singleton Pattern
+- NestedScrollView
+- AlertDialog
 
 ---
 
@@ -63,10 +65,13 @@ A navegação entre telas é gerenciada pelo `nav_graph.xml` via Navigation Comp
 ## Telas
 
 ### Home
-- Header com ícone de perfil, barra de pesquisa e botão do carrinho
-- Banner estático principal
-- Banner secundário
-- Lista de produtos via RecyclerView
+- Header fixo com ícone de perfil, barra de pesquisa com ícone e botão do carrinho
+- Conteúdo scrollável via `NestedScrollView`
+- Banner principal estático
+- Banner de categorias de PCs
+- Banner secundário de design
+- Título "Principais Ofertas:"
+- Lista de 5 produtos via `RecyclerView`
 - Dialog ao clicar no produto com opções: **Adicionar ao Carrinho** ou **Comprar Agora**
 
 ### Carrinho
@@ -79,6 +84,18 @@ A navegação entre telas é gerenciada pelo `nav_graph.xml` via Navigation Comp
 - Campos de nome e endereço
 - Seleção de forma de pagamento
 - Botão de confirmar compra
+
+---
+
+## Produtos Cadastrados
+
+| Produto | Preço |
+|---|---|
+| Water Cooler | R$ 250,00 |
+| Placa de Vídeo | R$ 1700,00 |
+| Fonte 650W | R$ 309,00 |
+| Mouse Gamer | R$ 500,00 |
+| Teclado Mecânico | R$ 350,00 |
 
 ---
 
@@ -96,6 +113,6 @@ A navegação entre telas é gerenciada pelo `nav_graph.xml` via Navigation Comp
 - [x] Uso de Fragments
 - [x] Uso de Activities
 - [x] Navigation Component
-- [ ] RecyclerView *(em desenvolvimento)*
-- [ ] Comunicação entre Activities por objetos *(em desenvolvimento)*
+- [x] RecyclerView
 - [x] Layout ergonômico e agradável
+- [ ] Comunicação entre Activities por objetos *(em desenvolvimento)*
