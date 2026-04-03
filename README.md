@@ -7,6 +7,7 @@ Aplicativo de loja de informática desenvolvido em Java puro no Android Studio.
 ---
 
 ## Estrutura do Projeto
+
 com.example.techshop_p1_grupo9
 ├── carrinho
 │    └── CarrinhoFragment.java
@@ -34,7 +35,6 @@ res/
 │    └── item_produto.xml          → layout de cada item da lista
 └── navigation/
 └── nav_graph.xml
-
 ---
 
 ## Tecnologias Utilizadas
