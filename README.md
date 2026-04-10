@@ -1,90 +1,47 @@
 # TechShop – P1 Grupo 9
 
-App Android de e-commerce de produtos de tecnologia. O usuário navega pelo catálogo, visualiza produtos com imagem e preço, adiciona itens ao carrinho e finaliza a compra.
-
-- **Pacote:** com.example.techshop_p1_grupo9
-- **Linguagem:** Java
-- **SDK mínimo:** API 24 (Android 7.0)
-- **SDK alvo:** API 36
+Projeto de aplicativo Android voltado para o e-commerce de produtos de tecnologia, desenvolvido como requisito para a avaliação P1. O sistema permite a navegação por catálogo, visualização de detalhes, gestão de carrinho e finalização de pedidos.
 
 ---
 
 ## Estrutura do Projeto
----
 
-## Activity
+### Activities
+* **MainActivity**: Atua como container principal. Responsável por inicializar o sistema de navegação e hospedar o NavHostFragment.
+* **DetalheProdutoActivity**: Activity secundária dedicada à exibição detalhada de um item. Recebe dados via Intent utilizando a serialização de objetos.
 
-### MainActivity
-Única Activity do projeto. Inicializa o layout com EdgeToEdge e hospeda o `NavHostFragment`, que gerencia a navegação entre os fragments.
+### Fragments
+* **homeFragment**: Tela inicial com listagem dinâmica de produtos.
+* **CarrinhoFragment**: Exibe a lista de itens selecionados pelo usuário para conferência.
+* **CompraFragment**: Interface para coleta de informações de pagamento e fechamento do pedido.
+* **PedidoFinalizadoFragment**: Confirmação visual de conclusão da transação.
 
----
-
-## Fragments
-
-### homeFragment
-Tela principal do app. Exibe header com barra de pesquisa e ícone de carrinho, banners promocionais e lista de produtos via RecyclerView. Ao clicar em um produto, um `AlertDialog` oferece as opções de adicionar ao carrinho ou comprar agora.
-
-### CarrinhoFragment
-Tela do carrinho de compras. Estrutura criada, implementação pendente.
-
-### CompraFragment
-Tela de finalização de compra. Estrutura criada, implementação pendente.
+### Lógica e Persistência
+* **Produto.java**: Classe de modelo (nome, preço, imagem) que implementa Serializable.
+* **ProdutoAdapter.java**: Gerencia a reciclagem de views e o vínculo de dados no RecyclerView.
+* **CarrinhoManager.java**: Singleton responsável por centralizar e manter os dados do carrinho durante a execução do app.
 
 ---
 
-## RecyclerView
+## Fluxo de Navegação
 
-### Produto.java
-Modelo de dados com os atributos `nome` (String), `preco` (double) e `imagemRes` (int).
+O projeto utiliza o Navigation Component para transições entre fragments e Intents para chamadas de novas activities.
 
-### ProdutoAdapter.java
-Adapter que renderiza a lista de produtos. Implementa `OnProdutoClickListener` para capturar cliques nos itens.
-
----
-
-## Navegação
-
-Utiliza o Android Navigation Component com grafo definido em `nav_graph.xml`.
-
-| Ação | Origem | Destino |
-|------|--------|---------|
-| action_home_to_carrinho | homeFragment | CarrinhoFragment |
-| action_home_to_compra | homeFragment | CompraFragment |
-| action_carrinho_to_compra | CarrinhoFragment | CompraFragment |
+| Origem | Destino | Método |
+|:---|:---|:---|
+| homeFragment | DetalheProdutoActivity | Intent com Objeto Serializable |
+| homeFragment | CarrinhoFragment | Navigation Action |
+| CarrinhoFragment | CompraFragment | Navigation Action |
+| CompraFragment | PedidoFinalizadoFragment | Navigation Action |
 
 ---
 
-## Produtos Cadastrados
+## Requisitos Avaliados
 
-| Produto | Preço |
-|---------|-------|
-| Water Cooler | R$ 250,00 |
-| Placa de Vídeo | R$ 1.700,00 |
-| Fonte 650W | R$ 309,00 |
-| Mouse Gamer | R$ 500,00 |
-| Teclado Mecânico | R$ 350,00 |
+1. **RecyclerView**: Implementado para otimização da listagem de produtos e itens do carrinho.
+2. **Activities**: Estrutura composta por múltiplas Activities para atender ao requisito de navegação entre contextos.
+3. **Fragments**: Uso de fragmentação para modularizar as etapas do processo de compra.
+4. **Comunicação por Objetos**: Transferência de dados técnicos entre componentes através de objetos serializados.
+5. **Ergonomia**: Interface organizada com foco em legibilidade e fluidez de navegação.
 
 ---
-
-## Dependências
-
-| Biblioteca | Versão |
-|------------|--------|
-| appcompat | 1.7.1 |
-| material | 1.13.0 |
-| activity | 1.13.0 |
-| constraintlayout | 2.2.1 |
-| navigation-fragment-ktx | 2.9.7 |
-| navigation-ui-ktx | 2.9.7 |
-
----
-
-## Requisitos Obrigatórios
-
-| Requisito | Status |
-|-----------|--------|
-| RecyclerView | Implementado em homeFragment com ProdutoAdapter |
-| Activities |  MainActivity como host dos fragments |
-| Fragments | homeFragment, CarrinhoFragment e CompraFragment |
-| Comunicação por objetos |  Classe Produto criada, passagem via Bundle pendente |
-| Layout ergonômico | Header fixo, scroll fluido e paleta de cores consistente |
