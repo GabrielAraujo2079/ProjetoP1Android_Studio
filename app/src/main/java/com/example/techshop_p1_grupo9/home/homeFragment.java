@@ -5,15 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.techshop_p1_grupo9.CarrinhoManager;
 import com.example.techshop_p1_grupo9.R;
 import android.content.Intent;
 import java.util.ArrayList;
@@ -37,7 +34,7 @@ public class homeFragment extends Fragment {
         // Lista de produtos
         List<Produto> produtos = new ArrayList<>();
         produtos.add(new Produto("Water Cooler Gamer RGB 240mm", 429.90, R.drawable.water_cooler));
-        produtos.add(new Produto("Processador AMD Ryzen 5 5600", 899.90, R.drawable.placa_de_video));
+        produtos.add(new Produto("Processador AMD Ryzen 5 5600", 899.90, R.drawable.ryzen5_5600));
         produtos.add(new Produto("Fonte 650W", 309.00, R.drawable.fonte_msi));
         produtos.add(new Produto("Mouse Gamer", 500.00, R.drawable.mouse_gamerwebp));
         produtos.add(new Produto("Teclado Mecânico", 350.00, R.drawable.teclado_mecanico));
